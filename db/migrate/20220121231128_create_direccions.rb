@@ -7,6 +7,7 @@ class CreateDireccions < ActiveRecord::Migration[7.0]
       t.string :sector
 
       t.timestamps
+
     end
   end
 end

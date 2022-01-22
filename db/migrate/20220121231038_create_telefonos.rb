@@ -5,6 +5,7 @@ class CreateTelefonos < ActiveRecord::Migration[7.0]
       t.string :convencional
 
       t.timestamps
+
     end
   end
 end

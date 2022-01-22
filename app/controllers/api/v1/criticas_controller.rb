@@ -1,14 +1,15 @@
+
 module Api
   module V1
-    class AbogadosController < ApplicationController
+    class CriticasController < ApplicationController
       def index
-        @abogados = Abogado.all
-        render json: @abogados,status: :ok
+        @criticas = Critica.all
+        render json: @criticas,status: :ok
       end
 
       def show
-        abogado = Abogado.find(params[:id])
-        render json: { status: 'Success', message: 'Cargado el abogado!', data: abogado }, status: :ok
+        critica = Critica.find(params[:id])
+        render json: { status: 'Success', message: 'Cargada la critica', data: critica }, status: :ok
       end
 
       # def create

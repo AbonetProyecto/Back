@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_17_024750) do
+ActiveRecord::Schema.define(version: 2022_01_21_233314) do
 
   create_table "abogados", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.decimal "casos", precision: 10
+    t.integer "casos"
     t.text "descripcion"
     t.decimal "calificacion", precision: 10
     t.bigint "usuario_id", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2022_01_17_024750) do
   end
 
   create_table "clientes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.decimal "historial", precision: 10
+    t.integer "historial"
     t.bigint "usuario_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -58,15 +58,19 @@ ActiveRecord::Schema.define(version: 2022_01_17_024750) do
 
   create_table "usuarios", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
-    t.string "contraseña"
+    t.string "contrasena"
+    t.bigint "telefono_id", null: false
+    t.bigint "direccion_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "telefono_id"
-    t.integer "direccion_id"
+    t.index ["direccion_id"], name: "index_usuarios_on_direccion_id"
+    t.index ["telefono_id"], name: "index_usuarios_on_telefono_id"
   end
 
   add_foreign_key "abogados", "usuarios"
   add_foreign_key "clientes", "usuarios"
   add_foreign_key "criticas", "abogados"
   add_foreign_key "criticas", "clientes"
+  add_foreign_key "usuarios", "direccions"
+  add_foreign_key "usuarios", "telefonos"
 end

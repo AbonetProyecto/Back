@@ -1,3 +1,3 @@
 class Cliente < ApplicationRecord
-  belongs_to :critica
+  has_one :usuario
 end
