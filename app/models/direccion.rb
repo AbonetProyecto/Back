@@ -1,4 +1,4 @@
 class Direccion < ApplicationRecord
-  belongs_to :usuario
+  belongs_to :direccion
 
 end

@@ -9,24 +9,24 @@ module Api
 
       def show
         critica = Critica.find(params[:id])
-        render json: { status: 'Success', message: 'Cargada la critica', data: critica }, status: :ok
+        render json: critica, status: :ok
       end
 
-      # def create
-      #   abogado = Abogado.new(abogado_params)
-      #
-      #   if abogado.save
-      #     render json: { status: 'Success', message: 'Se guardo el abogado', data: abogado }, status: :ok
-      #   else
-      #     render json: { status: 'Error!', message: 'Error', data: abogado.errors }, status: :unprocessable_entity
-      #
-      #   end
-      # end
-      #
-      # private
-      # def abogado_params
-      #   params.permit(:casos, :descripcion, :califiacion, :usuario_id)
-      # end
+      def create
+        critica = Critica.new(critica_params)
+
+        if critica.save
+          render json: { status: 'Success', message: 'Se guardo la critica', data: critica }, status: :ok
+        else
+          render json: { status: 'Error!', message: 'Error', data: critica.errors }, status: :unprocessable_entity
+
+        end
+      end
+
+      private
+      def critica_params
+        params.permit(:descripcion,:cliente_id, :abogado_id)
+      end
     end
   end
 end

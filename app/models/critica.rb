@@ -1,4 +1,4 @@
 class Critica < ApplicationRecord
-  has_many :abogados
-  has_many :clientes
+  belongs_to :abogado
+  belongs_to :cliente
 end

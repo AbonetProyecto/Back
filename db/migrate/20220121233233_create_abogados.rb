@@ -1,10 +1,10 @@
 class CreateAbogados < ActiveRecord::Migration[7.0]
   def change
-    create_table :abogados do |t|
+    create_table :direccion do |t|
       t.integer :casos
       t.text :descripcion
       t.decimal :calificacion
-      t.references :usuario, null: false, foreign_key: true
+      t.references :direccion, null: false, foreign_key: true
 
       t.timestamps
 
